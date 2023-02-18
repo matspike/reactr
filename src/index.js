@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Component } from 'react'
+import ReactDom from 'react-dom'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import Text from './text.md';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const markdown = `Just a link: https://reactjs.com.`
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDom.render(
+  <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />,
+  document.body
+)
+
+// class App extends Component {
+
+//     constructor() {
+//       super();
+//       this.state = { markdown: '' };
+//     }
+  
+//     componentWillMount() {
+//       // Get the contents from the Markdown file and put them in the React state, so we can reference it in render() below.
+//       fetch(Text).then(res => res.text()).then(text => this.setState({ markdown: text }));
+//     }
+  
+//     render() {
+//       const { markdown } = this.state;
+//       return <ReactMarkdown source={markdown} />;
+//     }
+//   }
+  
+// export default App;
